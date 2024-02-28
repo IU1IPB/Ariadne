@@ -69,7 +69,7 @@ JS8CALL HEARING?
 **APRS side :**
 
 1.  Normal APRS messages are forwarded without any special need to JS8CALL “HEARD” station
-2.  Asking the ANSRVR for knowing if there are active JS8CALL gateways :
+2.  Asking the ANSRVR group for knowing if there are active JS8CALL gateways :
 
 \<ASKING CALLSIGN \> ANSRVR: CQ JS8CALL GATEWAY?
 
