@@ -117,7 +117,7 @@ source ariadne.venv/bin/activate
 
 At startup or as service : **realTimeAprsGet**
 
-1.  That’s all. Please consider that the programs write a log file in the same folder (ariadne.log), that records all events but that grows quickly: please consider to periodically archive manually or via logrotate; an utility program (archivingGatewayHistory.py) can be periodically used in order to reduce js8call database size and to archive js8call contact logs.
+3.  That’s all. Please consider that the programs write a log file in the same folder (ariadne.log), that records all events but that grows quickly: please consider to periodically archive manually or via logrotate; an utility program (archivingGatewayHistory.py) can be periodically used in order to reduce js8call database size and to archive js8call contact logs.
 
 **CREDITS**
 
