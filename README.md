@@ -26,7 +26,7 @@ Future interface with radioAPRS (using Direwolf) and MQTT public brokers will be
 
 ARIADNE uses five python3 programs, without any Graphical interface.
 
-It interacts with JS8CALL fantastic program only reading or writing its inbox/outbox standard database : the real time API provided by JS8CALL are not used.
+It interacts with JS8CALL fantastic program only reading or writing its inbox/outbox standard database : the real time APIs provided by JS8CALL are not used.
 
 It has been well tested on Linux / Debian, but it runs also under Windows.
 
