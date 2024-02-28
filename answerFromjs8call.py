@@ -296,9 +296,9 @@ unique_messages = set([msg for msg in updated_messages if len(msg) > 6])
 
 # FOR TEST February 2023
 
-for u in unique_messages:
+#for u in unique_messages:
 
-    if len(u) > 7:
+#    if len(u) > 7:
 #        print(u)
 
 
