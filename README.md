@@ -1,4 +1,4 @@
-**ARIADNE : APRS and INTERNET gateway to JS8CALL network.**
+**ARIADNE : a small APRS and internet gateway to JS8CALL network.**
 
 ARIADNE is born following the need of connecting a low cost Patagonian alpinist expedition without using expensive Thuraya satellites phones.
 
@@ -41,7 +41,7 @@ It’s also possible to activate only the APRS side or only the email side of th
 For activating APRS full e-gateway the following programs are required :
 
 -   **realTimeAprsGet** : daemon that check aprs.is in real time and answers to ANSRVR group requests
-   
+-   
 1.  **historicalQsoStatistics** ; it periodically update the “heard” (by the gateway js8call) list of stations, reading JS8CALL data.
 2.  **aprs2js8call** : main program : it checks if on aprs there are messages directed to any radio callsign that can be bidirectionally received and, if found, it moves those messages in the js8call inbox/oubox for later delivery, after a QUERY MSGS command.
 3.  **answerFromjs8call** : if a message is sent by remote radio station to/via gateway to an aprs (or email) “connectable” station, it forwards the message back (syntax js8call MESSAGE TO:[CALLSIGN] [MESSAGE] sent to gateway station) immediately via aprs or email.
@@ -117,4 +117,10 @@ source ariadne.venv/bin/activate
 
 At startup or as service : **realTimeAprsGet**
 
-1.  That’s all. Please consider that the programs write a log file in the same folder (ariadne.log), that records all events but that grows quickly : please consider to periodically archive manually or via logrotate; an utility program (archivingGatewayHistory.py) can be periodically used in order to reduce js8call database size and to archive js8call contact logs.
+1.  That’s all. Please consider that the programs write a log file in the same folder (ariadne.log), that records all events but that grows quickly: please consider to periodically archive manually or via logrotate; an utility program (archivingGatewayHistory.py) can be periodically used in order to reduce js8call database size and to archive js8call contact logs.
+
+**CREDITS**
+
+Of course JS8CALL does all the job : credits to KN4CRD JORDAN T SHERER, the author of JS8CALL, really a step ahead in ham radio digital communications, that allows reliable exchanges with a few Watts of power and poor antennas all over the world.
+
+Totally useless to say what FT8 protocol has meant and will have in the future in the field of HAM radio communication and of ionospheric propagation study : *chapeau* to Joseph Hooton Taylor Jr. and it’s group.
