@@ -16,7 +16,7 @@ Feedback is sent back to the sender by APRS / email when the message was deliver
 
 A few inquiries are available: email senders can ask the gateway for having the full list of “heard” stations, while APRS users can check JS8CALL ANSRVR group (in MQTT like “broker /subscriber / publisher” logic) to get the list of active gateways worldwide (with locator and email address) or directly for asking which station can connect a desired js8call QRA.
 
-The tool has been well tested on unit tests cases, but it lack an extensive field use. It must be considered in beta status. **Do not trust it for emergency communications**.
+The tool has been well tested on unit tests cases, but it lacks an extensive field use. It must be considered in beta status. **Do not trust it for emergency communications**.
 
 Please consider **local radio regulations**, mainly regarding the transmission of QTC messages on behalf of other stations, before activating Ariadne.
 
