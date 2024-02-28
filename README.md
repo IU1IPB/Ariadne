@@ -41,7 +41,7 @@ It’s also possible to activate only the APRS side or only the email side of th
 For activating APRS full e-gateway the following programs are required :
 
 -   **realTimeAprsGet** : daemon that check aprs.is in real time and answers to ANSRVR group requests
--   
+   
 1.  **historicalQsoStatistics** ; it periodically update the “heard” (by the gateway js8call) list of stations, reading JS8CALL data.
 2.  **aprs2js8call** : main program : it checks if on aprs there are messages directed to any radio callsign that can be bidirectionally received and, if found, it moves those messages in the js8call inbox/oubox for later delivery, after a QUERY MSGS command.
 3.  **answerFromjs8call** : if a message is sent by remote radio station to/via gateway to an aprs (or email) “connectable” station, it forwards the message back (syntax js8call MESSAGE TO:[CALLSIGN] [MESSAGE] sent to gateway station) immediately via aprs or email.
