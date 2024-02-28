@@ -79,7 +79,7 @@ JS8CALL GATEWAY: \<gateway locator\> \<gateway email address\>
 
 1.  Asking the ANSRVR for knowing if a station can be reached :
 
-CQ JS8CALL HEARING? \< requested callsign\>
+\<ASKING CALLSIGN \> ANSRVR: CQ JS8CALL HEARING? \< requested callsign\>
 
 Each active gateway that receive this request, will answer automatically with the following APRS message :
 
