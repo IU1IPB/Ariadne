@@ -30,11 +30,11 @@ It interacts with JS8CALL fantastic program only reading or writing its inbox/ou
 
 It has been well tested on Linux / Debian, but it runs also under Windows.
 
-The gateway JS8CALL radio station **must** have HeartBeat networking and automatic answers switched on without any timeout, working in full automatic status.
+The gateway JS8CALL radio station **must** have HeartBeat networking and automatic answer switched on without any timeout, working in full automatic status.
 
 The main programs should be scheduled periodically in sequence (they are usually fast), with an execution frequency coherent with the automatic HeartBeat generation timing : usual setup expects a full execution each 10-15 minutes.
 
-The realTimeAprsGet.py program it’s a never-ending daemon that check continuously the APRS network in order to answer to requests to ANSRVR group : it’s execution it’s not mandatory (loosing the ANSRVR capability), but it must be scheduled at system startup or defined as SYSTEMCTL service (or equivalent n Windows).
+The realTimeAprsGet.py program it’s a never-ending daemon that check continuously the APRS network in order to answer to requests to ANSRVR group : it’s execution it’s not mandatory (loosing the ANSRVR capability), but it must be scheduled at system startup or defined as SYSTEMCTL service (or equivalent in Windows).
 
 It’s also possible to activate only the APRS side or only the email side of the gateway, loosing some capabilities, only scheduling the desired programs (see below).
 
