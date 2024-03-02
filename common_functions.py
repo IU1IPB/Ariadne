@@ -15,7 +15,7 @@ import smtplib  # SMTP
 import socket   # socket library
 import sqlite3
 import ssl
-import requests  # CURL like library
+#import requests  # CURL like library
 import aprslib  # APRS library
 
 from urllib.parse import quote  # Libreria urlencode semplificata
@@ -138,33 +138,34 @@ def test_alive_ip_port(ip_address, port):
 ############################
 
 
-def send_msg_to_aprs_findu(sender_callsign, destination_callsign,
-                           plain_text_message):
-    """
+#def send_msg_to_aprs_findu(sender_callsign, destination_callsign,
+#                           plain_text_message):
+#    """
+#
+#    Send the aprs message via findu.com
+#
+#    """
 
-    Send the aprs message via findu.com
+#    resp = test_alive_ip_port("findu.com", 80)
+#    if resp != 0:
 
-    """
+#        return resp
 
-    resp = test_alive_ip_port("findu.com", 80)
-    if resp != 0:
+#    connection_string = "http://www.findu.com/cgi-bin/sendmsg.cgi?fromcall=" + \
+#        sender_callsign + "&tocall=" + destination_callsign + "&msg="
 
-        return resp
-
-    connection_string = "http://www.findu.com/cgi-bin/sendmsg.cgi?fromcall=" + \
-        sender_callsign + "&tocall=" + destination_callsign + "&msg="
-
-    msg = quote(plain_text_message)  # Plain test urlencode
-    resp = requests.get(connection_string + msg)
+#    msg = quote(plain_text_message)  # Plain test urlencode
+#    resp = requests.get(connection_string + msg)
 #    print(connection_string + msg)
-    if resp.ok:
+#    if resp.ok:
+#
+#        return 0
 
-        return 0
+#    return resp
 
-    return resp
 
-# àà
 
+############################
 
 def send_msg_to_aprs(sender_callsign, destination_callsign,
                      plain_text_message):
