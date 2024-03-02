@@ -99,9 +99,7 @@ A python3 standard installation is required to execute Ariadne.
 source ariadne.venv/bin/activate
 
 1.  Install dependencies:
-
-    pip3 install requests
-
+   
     pip3 install aprslib
 
 1.  Edit the config.ini file according to your needs. The file should be self-explanatory, but in any case you have to insert at least : the js8call installation folder (that changes between Windows or Linux systems), js8call gateway callsign, its Maidenhead locator in form AAbbcc or AAbb, the APRS-FI self-generating password for your station (if you plan to use APRS), the self-generating APRS-IS passkey (if you plan to use ANSRVR automatic answering), the gateway email address account data (e.g. gmail username, server address, app-key) both for reading email and for sending them and finally some station behaviour settings (e.g. the number of hours since the last bidrectional QSO for which an “heard” station can be considered reachable).
