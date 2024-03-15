@@ -146,12 +146,12 @@ if os.path.exists(js8call_log) is False :
       sys.exit(4)
 
 
-#... "ignore" is required to skyp not UTF8 charcters in the log files, quite dirty...
-
+#... "ignore" is required to skip not UTF8 charcters in the log files, quite dirty...
+# context manager "with"..
 with open(js8call_log, 'r', encoding='utf8', errors='ignore') as tsv:
 
     for line in tsv:
-        
+
 #        line = line.encode('utf-8').strip()
 #        line = unicodedata.normalize('NFKD', line)
         line = re.sub(r'[^\x00-\x7F]+',' ', line) # strip not-ascii codes
@@ -190,8 +190,20 @@ with open(js8call_log, 'r', encoding='utf8', errors='ignore') as tsv:
         qso_time = date + " " + time
 
 #  ... and qsotime must be '%Y-%m-%d %H:%M:%S'
+# ... very long message texts are saved in a new line without date : 
+# in this case the message will be triuncated in Ariadne Db
 
-        qso_time = datetime.strptime(qso_time, date_format)
+        try:
+
+            qso_time = datetime.strptime(qso_time, date_format)
+
+        except ValueError:
+#            raise ValueError("Incorrect data format, should be YYYY-MM-DD")
+
+            continue
+
+
+#        qso_time = datetime.strptime(qso_time, date_format)
         epoch = calendar.timegm(qso_time.timetuple())  # QSO date / time in linux epoch UTC
 
 # We need to move to QSO database :

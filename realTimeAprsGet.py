@@ -99,7 +99,7 @@ def read_aprs():
 
         APRS.consumer(callback_aprs, raw=True)
 
-    except ConnectionError as err:
+    except (ConnectionError, ConnectionResetError) as err:
 
         logging.warning('> APRS connection lost : ' + err)
         time.sleep(300)
@@ -158,6 +158,9 @@ def callback_aprs(packet):
 # The following packet structures are considered for extraction :
 # IU1IPB>APWW11,qAO,KJ4ERJ-15::JS8CALL  :N:JS8CALL GATEWAY?
 # IU1IPB>APWW11,qAO,KJ4ERJ-15::JS8CALL  :N:JS8CALL HEARING? IZ1BPS
+#
+# Group expiration :
+# ANSRVR>APWW11,KJ4ERJ-15*,TCPIP*,qAS,KJ4ERJ-15::IU1IPB   :N:JS8CALL Removed From Group{DS}
 
         global cursor_ariadne
 
@@ -207,6 +210,11 @@ def callback_aprs(packet):
 # Managing the "Gateway" request : we announce to group that we are alive, with locator and email
 # The request message, sent to ANSRVR, must have the folowing syntax : CQ <group name> GATEWAY?
 # Sometime ANSRVR is less reliable than a MQTT broker....
+
+            ### TEST
+
+            #logging.warning(
+            #       '> -' + msg[0:-4])
 
             if request_string == ('N:' + gateway_announcement_ANSRVR_group + ' GATEWAY?') \
                     or request_string == ('N:' + gateway_announcement_ANSRVR_group + ':GATEWAY?'):
@@ -353,7 +361,7 @@ def callback_aprs(packet):
 
                     if heard is None:
 
-                        info_message = '> QRA : ' + qra_requested + \
+                        info_message = '> The station ' + qra_requested + \
                             ' is not heard by ' + gateway_callsign
 
                     else:
@@ -373,9 +381,25 @@ def callback_aprs(packet):
                     if rc != 0:
 
                         logging.error(
+
                             '> APRS connection lost : gateway request answer was not sent.')
 
-    except ConnectionError as err:
+### Managing the expiring message from ANSRVR 
+
+            elif msg[0:-4] =='N:' + gateway_announcement_ANSRVR_group + ' REMOVED FROM GROUP' :
+ 
+                rc = send_msg_to_aprs(
+                   gateway_callsign,
+                   'ANSRVR',
+                   'J ' +
+                   gateway_announcement_ANSRVR_group)
+#        rc = 0
+                logging.warning(
+                   '> Gateway opportunistic keepalive registration on ANSRVR group : ' +
+                   gateway_announcement_ANSRVR_group)
+
+
+    except (ConnectionError, ConnectionResetError) as err:
 
        logging.warning('> APRS connection lost : ' + err)
        time.sleep(300)

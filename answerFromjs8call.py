@@ -683,7 +683,7 @@ for i in query_msgs :
                 params_ariadne)
  
             connection_ariadne.commit()
-            logging.warning('Answer QUERY CALL set in inbox : ' + str(message_id))
+            logging.warning('Answer QUERY CALL set in inbox : ' + str(last_js8call_key))
 
 
 logging.warning('QUERY CALL check process ended.\n')
