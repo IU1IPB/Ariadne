@@ -1,0 +1,28 @@
+# /etc/systemd/system/realTimeAprsGet.service
+
+[Unit]
+Description=Start APRS receiver daemon
+After=network.target
+#Type=oneshot
+
+[Service]
+Type=Simple
+RuntimeDirectory=/home/pi/Ariadne
+WorkingDirectory=/home/pi/Ariadne
+#User=pi
+#Group=pi
+#StandardOutput=journal
+#StandardError=inherit
+TimeoutStartSec=20
+ExecStart=/usr/bin/bash /home/pi/Ariadne/startRealTimeAprsGet.bash
+ExecReload=/usr/bin/bash /home/pi/Ariadne/startRealTimeAprsGet.bash
+KillSignal=SIGTERM
+PrivateTmp=true
+Restart=always
+RestartSec=10
+StartLimitBurst=5
+StartLimitIntervalSec=20
+
+[Install]
+WantedBy=multi-user.target
+
