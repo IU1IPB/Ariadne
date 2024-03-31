@@ -127,7 +127,9 @@ def callback_aprs(packet):
         # Get now() time in UTC and convert to Epoch
         epoch_timestamp = calendar.timegm(time.gmtime())
 
-        if before <= (epoch_timestamp - 43200):
+# Periodic keepalive on ANSRVR each 3 hours : the 'opportunistic' sometime fails.
+
+        if before <= (epoch_timestamp - (3 * 3600)):
 
 # JS8CALL gateway that would like to answer over APRS must
 # register itself on JS8CALL ANSRVR group (in MQTT logic : ANSRVR is the broker).
@@ -386,7 +388,9 @@ def callback_aprs(packet):
 
 ### Managing the expiring message from ANSRVR 
 
-            elif msg[0:-4] =='N:' + gateway_announcement_ANSRVR_group + ' REMOVED FROM GROUP' :
+            elif msg[0:-4].upper() == 'N:' + gateway_announcement_ANSRVR_group + ' REMOVED FROM GROUP' :
+
+                time.sleep(60)
  
                 rc = send_msg_to_aprs(
                    gateway_callsign,
